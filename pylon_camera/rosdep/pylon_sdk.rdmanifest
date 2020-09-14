@@ -1,4 +1,4 @@
-uri: 'https://raw.githubusercontent.com/basler/pylon-ros-camera/master/pylon_camera/rosdep/empty.tar'
+uri: 'https://raw.githubusercontent.com/tim-fan/pylon-ros-camera/master/pylon_camera/rosdep/empty.tar'
 
 md5sum: df41600634ca08cb5082877eb64220c9
 install-script: |
@@ -13,19 +13,7 @@ install-script: |
     fi
   fi
 
-  arch="$(uname -m)"
-  if [ "$arch" == "armv7l" ]; then
-    pkgarch="armhf"
-  elif [ "$arch" == "aarch64" ]; then
-    pkgarch="arm64"
-  elif [ "$arch" == "arm64" ]; then
-    pkgarch="arm64"
-  elif [ "$arch" == "x86_64" ]; then
-    pkgarch="amd64"
-  else
-    pkgarch="i386"
-  fi
-
+  pkgarch=$(dpkg --print-architecture)
   version="5.2.0.13457"
   pkg=pylon_${version}-deb0_${pkgarch}.deb
   url="https://dnb-public-downloads-misc.s3.eu-central-1.amazonaws.com/pylon/${pkg}"
